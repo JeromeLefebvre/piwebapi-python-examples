@@ -22,6 +22,8 @@ lib64/
 parts/
 sdist/
 var/
+# a virtualenv for python3 packages
+py3/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -60,5 +62,3 @@ docs/_build/
 target/
 
 .idea/
-
-

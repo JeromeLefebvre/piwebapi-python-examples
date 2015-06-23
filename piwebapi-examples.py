@@ -57,8 +57,8 @@ def update_af_attribute(af_attribute_dict, json_data, headers):
 
 if __name__ == "__main__":
 
-    pi_webapi_server = 'SECRETWEBSERVER'
-    pi_asset_server = 'SECRETAFSERVER'
+    pi_webapi_server = 'localhost'
+    pi_asset_server = 'localhost'
     pi_asset_database = 'Sandbox'
 
     # 1.0 --------------------------------------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     # Get AF value for attribute
     af_value = get_stream_value(af_attribute, None)
 
-    print unbunchify(af_value)
+    print(unbunchify(af_value))
     # output:
     # {u'Questionable': False,
     # u'Good': True,
@@ -103,14 +103,14 @@ if __name__ == "__main__":
     req_data = {'Timestamp': '2015-06-03T00:00:00', 'Value': '25.0'}
     req_headers = {'Content-Type': 'application/json'}
     post_result = post_stream_value(af_attribute, req_data, req_headers)
-    print post_result.status_code
+    print(post_result.status_code)
     # output:
     # 202
 
     # Read back the value just written
     req_params = {'time': '2015-06-03T00:00:00'}
     af_value = get_stream_value(af_attribute, req_params)
-    print unbunchify(af_value)
+    print(unbunchify(af_value))
     # output:
     # {u'Questionable': False,
     # u'Good': True,
@@ -124,16 +124,12 @@ if __name__ == "__main__":
     req_data = {'Description': 'Hello world'}
     req_headers = {'Content-Type': 'application/json'}
     patch_result = update_af_attribute(af_attribute, req_data, req_headers)
-    print patch_result.status_code
+    print(patch_result.status_code)
     # output:
     # 204
 
     # Read the attribute description
     af_attribute = get_attribute(af_element, "MyAttribute")
-    print af_attribute.Description
+    print(af_attribute.Description)
     # output:
     # Hello world
-
-
-
-
